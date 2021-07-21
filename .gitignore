@@ -1,0 +1,11 @@
+node_modules
+.umi
+.umi-production
+/dist
+/.vscode
+.DS_Store
+npm-debug.log*
+.idea
+package-lock.json
+doc
+public/plugin-browser
