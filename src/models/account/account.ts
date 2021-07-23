@@ -3,14 +3,14 @@
  * @version: 1.0.0
  * @Author: wutao
  * @Date: 2021-07-16 17:14:34
- * @LastEditTime: 2021-07-20 16:52:50
+ * @LastEditTime: 2021-07-23 15:06:49
  */
 import { useState } from "react";
 import { createModel } from 'hox';
 import { useRequest } from 'ahooks';
 import { reqSuccess, RequestData } from "@/utils/request";
 import { RawMenuElement } from "@/layouts/main/component/menus/menu";
-import { MENU_DATA_MOCK } from "../../../mock/menus";
+// import { MENU_DATA_MOCK } from "../../../mock/menus";
 
 export const TOKEN = 'USER_TOKEN';
 
@@ -43,10 +43,11 @@ function useAccount() {
   }), {
     onSuccess(res: RequestData) {
       if (reqSuccess(res)) {
-        const rawMenus = MENU_DATA_MOCK;
+        // const rawMenus = MENU_DATA_MOCK;
+        const { userInfo, menus } = res.data
         // delete res.data.sysMenus;
-        setUserInfo(res.data);
-        setRawMenus(rawMenus)
+        setUserInfo(userInfo);
+        setRawMenus(menus)
         setLoginStatus(true)
       } else {
         setLoginStatus(false)

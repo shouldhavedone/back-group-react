@@ -3,12 +3,13 @@
  * @version: 1.0.0
  * @Author: wutao
  * @Date: 2021-07-20 16:54:26
- * @LastEditTime: 2021-07-20 16:55:58
+ * @LastEditTime: 2021-07-23 17:23:57
  */
 import React from 'react';
+import { Skeleton } from 'antd';
 
 export const HomePage: React.FC = () => {
   return (
-    <h1>我是首页</h1>
+    <Skeleton active avatar paragraph={{ rows: 4 }} />
   )
 }

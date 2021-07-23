@@ -9,7 +9,7 @@ const wget = require('wget')
 const extendRequest = request.extend({ timeout: 10000 });
 
 const icon = [{  // 自动维护图标
-  aliUrl: '//at.alicdn.com/t/font_2299850_kho69zvazd.css', // 暂时只支持使用阿里巴巴图标库
+  aliUrl: '//at.alicdn.com/t/font_2299850_jyr5534sz1.css', // 暂时只支持使用阿里巴巴图标库
   dir: './public/fonts'  // 公共图标
 }]
 

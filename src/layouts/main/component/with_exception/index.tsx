@@ -3,9 +3,9 @@
  * @version: 1.0.0
  * @Author: wutao
  * @Date: 2021-07-16 16:33:47
- * @LastEditTime: 2021-07-20 17:10:24
+ * @LastEditTime: 2021-07-23 17:18:28
  */
-import React, { useState } from 'react';
+import React from 'react';
 import { getMatchMenu } from '@umijs/route-utils';
 import Exception404 from './404';
 import Exception403 from './403';
@@ -13,51 +13,35 @@ import DidCatch from './did_catch';
 import { IRoute } from 'umi';
 import { Spin } from 'antd';
 
-import { useCreation, useMount } from 'ahooks';
+import { useCreation } from 'ahooks';
+import {IndexOfPaths} from "@/layouts/main/component/menus/menu";
+import {useNetworkModel} from "@/models/network";
 
 interface IWithExceptionProps {
   routes: IRoute[];
   pathname: string;
+  backendRoutes:IndexOfPaths;
 }
 
-export const layoutLoadingEvent = new CustomEvent('setLoading');
-
-interface IlayoutLoadingEvent extends Event {
-  loading?: boolean
-}
-
-const WithException: React.FC<IWithExceptionProps> = function ({ children, pathname, routes }) {
+const WithException:React.FC<IWithExceptionProps> = function({children, pathname, routes, backendRoutes}) {
+  const {networkInfo}=useNetworkModel();
   const currentPathConfig = useCreation(() => {
     // 动态路由匹配
     return getMatchMenu(pathname, routes).pop();
   }, [pathname, routes]);
 
-  const [loading, setLoading] = useState(false);
-  useMount(() => {
-    const temp: Boolean[] = [];
-    addEventListener('setLoading', (e: IlayoutLoadingEvent) => {
-      if (e.loading) {
-        temp.push(e.loading);
-        setLoading(true)
-      } else {
-        temp.splice(0, 1);
-        if (temp.length === 0) {
-          setLoading(false)
-        }
-      }
-      console.log(temp)
-    })
-  })
-
-
-  if (!currentPathConfig) {
+  //umi路由匹配函数找不到路径 提示404
+  if(!currentPathConfig) {
     return <Exception404 />;
   }
-  if (currentPathConfig.unaccessible) {
+
+  //前端routes存在该路径 而后端routes没有 提示非法访问403
+  if(!backendRoutes[pathname]) {
     return <Exception403 />;
   }
-
-  return <Spin spinning={loading}><DidCatch>{children}</DidCatch></Spin>;
+  console.log(children, pathname, routes)
+  const {inRequest,modalLoading,hideLoading,loadingContent}=networkInfo;
+  return <Spin spinning={!hideLoading && inRequest && !modalLoading} tip={loadingContent}><DidCatch>{children}</DidCatch></Spin>
 }
 
 export default WithException;

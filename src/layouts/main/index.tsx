@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { IRouteProps } from 'umi';
 import { TOKEN, useAccountModel } from "@/models/account/account";
 import { LoginPage } from "../../pages/login";
+import { ContentPage } from './component/content'
 import { LOGIN_ROUTE } from "@/constants/config";
 import { ConfigProvider, notification } from "antd";
 import { Loading } from "@/layouts/main/component/loading";
@@ -41,7 +42,7 @@ const LayoutComponent: React.FC<IRouteProps> = (props) => {
   return (
     <ConfigProvider locale={zh_CN}>
       {
-        loginStatus ? <h1>我是系统首页</h1> : <LoginPage />
+        loginStatus ? <ContentPage {...props} /> : <LoginPage />
       }
     </ConfigProvider>
   )

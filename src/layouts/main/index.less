@@ -25,3 +25,33 @@
   margin: 0;
   background-color: #fff;
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+  .logout {
+    height: 24px;
+    line-height: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    i {
+      font-size: 20px;
+      margin-right: 8px;
+      color: #0bb80b;
+    }
+  }
+}
+
+:global(.ant-layout-header) {
+  background: #fff;
+  box-shadow: 0 0 6px rgba(42, 175, 143, 0.1);
+  height: 70px;
+  width: 100%;
+  z-index: 1;
+  padding-left: 50px;
+}

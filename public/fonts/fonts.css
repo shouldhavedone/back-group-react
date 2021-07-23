@@ -13,6 +13,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.iconquanxian:before {
+  content: "\e60a";
+}
+
 .iconuser1:before {
   content: "\e61c";
 }
