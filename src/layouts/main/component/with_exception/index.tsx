@@ -3,7 +3,7 @@
  * @version: 1.0.0
  * @Author: wutao
  * @Date: 2021-07-16 16:33:47
- * @LastEditTime: 2021-07-23 17:18:28
+ * @LastEditTime: 2021-07-26 14:45:49
  */
 import React from 'react';
 import { getMatchMenu } from '@umijs/route-utils';
@@ -39,7 +39,6 @@ const WithException:React.FC<IWithExceptionProps> = function({children, pathname
   if(!backendRoutes[pathname]) {
     return <Exception403 />;
   }
-  console.log(children, pathname, routes)
   const {inRequest,modalLoading,hideLoading,loadingContent}=networkInfo;
   return <Spin spinning={!hideLoading && inRequest && !modalLoading} tip={loadingContent}><DidCatch>{children}</DidCatch></Spin>
 }

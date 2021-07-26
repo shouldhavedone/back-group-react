@@ -3,7 +3,7 @@
  * @version: 1.0.0
  * @Author: wutao
  * @Date: 2021-07-16 16:33:05
- * @LastEditTime: 2021-07-23 17:31:16
+ * @LastEditTime: 2021-07-26 14:27:50
  */
 import { IRoute } from 'umi';
 
@@ -13,6 +13,7 @@ const routes: IRoute[] = [
     component: '../layouts/main',
     routes: [
       { exact: true, path: '/home', component: 'home' },
+      { exact: true, path: '/blog', component: 'blog' },
     ]
   }
 ]

@@ -3,7 +3,7 @@
  * @version: 1.0.0
  * @Author: wutao
  * @Date: 2021-07-21 10:53:20
- * @LastEditTime: 2021-07-23 17:26:20
+ * @LastEditTime: 2021-07-26 14:35:10
  */
 
 import React, { createContext, useState, useEffect } from 'react'
@@ -44,7 +44,6 @@ export const ContentPage: React.FC<IRouteProps> = ({ children, route, location: 
   const context: RootContentValue = {
     ...pathInfo
   }
-  console.log('route：', route)
 
   const { menuData: routeData } = transformRoute(
     route.routes,
@@ -118,8 +117,6 @@ export const ContentPage: React.FC<IRouteProps> = ({ children, route, location: 
     })
   }, [])
 
-  console.log('children:', children)
-
   return (
     <RootContext.Provider value={context}>
       <Layout className={styles.layout_box}>
@@ -139,6 +136,7 @@ export const ContentPage: React.FC<IRouteProps> = ({ children, route, location: 
         </Header>
         <Layout>
           <WithException backendRoutes={PATH_INDEX} pathname={pathname} routes={routeData}>
+            <Menus mode={MENU_MODE.INLINE} data={rawMenus} pathIndex={PATH_INDEX} pathname={pathname} onChange={params => setPathInfo(params)} />
             <Content>
               {children}
             </Content>

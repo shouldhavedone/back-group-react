@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @version: 1.0.0
+ * @Author: wutao
+ * @Date: 2021-07-16 16:33:47
+ * @LastEditTime: 2021-07-26 14:45:08
+ */
 import { Result, Button } from 'antd';
 import { history } from 'umi';
 import React from 'react';
