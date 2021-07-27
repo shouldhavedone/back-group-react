@@ -1,6 +1,25 @@
+@height: 100vh / 1080px;
+@height1: 72px * @height;
+
 .layout_box {
   min-height: 100vh;
   position: relative;
+}
+
+.layout_main_box {
+  flex-direction: row;
+
+  :global {
+
+    .ant-spin-nested-loading,
+    .ant-result {
+      flex: 1;
+    }
+
+    .icon {
+      margin-right: 10px;
+    }
+  }
 }
 
 .layout_left {
@@ -10,7 +29,8 @@
 .layout_left_menu {
   height: 100%;
   border-right: 0;
-  width: 200px;
+  width: 220px;
+  height: calc(100vh - @height1);
 }
 
 .layout_right {
@@ -33,6 +53,12 @@
   align-items: center;
   position: relative;
 
+  :global {
+    .ant-menu .icon {
+      display: none;
+    }
+  }
+
   .logout {
     height: 24px;
     line-height: 24px;
@@ -51,12 +77,8 @@
 :global(.ant-layout-header) {
   background: #fff;
   box-shadow: 0 0 6px rgba(42, 175, 143, 0.1);
-  height: 70px;
+  height: @height1;
   width: 100%;
   z-index: 1;
   padding-left: 50px;
-}
-
-:global(.ant-spin-container) {
-  display: flex;
 }

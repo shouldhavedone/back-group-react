@@ -3,7 +3,7 @@
  * @version: 1.0.0
  * @Author: wutao
  * @Date: 2021-07-19 10:00:54
- * @LastEditTime: 2021-07-22 15:47:33
+ * @LastEditTime: 2021-07-27 14:16:03
  */
 export interface RawMenuElement {
   id: string,
@@ -18,7 +18,7 @@ export interface RawMenuElement {
 }
 
 export interface TreeMenuElement extends RawMenuElement {
-  children?: TreeMenuElement[],
+  Menus?: TreeMenuElement[],
   parent?: TreeMenuElement[],
 }
 

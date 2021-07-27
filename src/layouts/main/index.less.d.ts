@@ -7,6 +7,7 @@ interface CssExports {
   'layout_content': string;
   'layout_left': string;
   'layout_left_menu': string;
+  'layout_main_box': string;
   'layout_right': string;
   'logout': string;
 }

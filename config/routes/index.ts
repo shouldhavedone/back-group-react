@@ -6,6 +6,7 @@
  * @LastEditTime: 2021-07-26 14:27:50
  */
 import { IRoute } from 'umi';
+import { quan_xian_routes } from './quan_xian'
 
 const routes: IRoute[] = [
   {
@@ -14,6 +15,7 @@ const routes: IRoute[] = [
     routes: [
       { exact: true, path: '/home', component: 'home' },
       { exact: true, path: '/blog', component: 'blog' },
+      quan_xian_routes,
     ]
   }
 ]
